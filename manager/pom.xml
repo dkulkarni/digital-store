@@ -11,5 +11,13 @@
 
     <artifactId>manager</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.dk</groupId>
+            <artifactId>catalog-client</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
 
 </project>

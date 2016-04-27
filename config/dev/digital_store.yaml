@@ -1,3 +1,6 @@
+catalogConfiguration:
+  url: "http://take-home-test.herokuapp.com/api/v1"
+
 server:
   applicationConnectors:
   - type: http

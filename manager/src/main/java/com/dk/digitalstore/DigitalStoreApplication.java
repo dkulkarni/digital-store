@@ -1,5 +1,6 @@
 package com.dk.digitalstore;
 
+import com.dk.catalogclient.config.CatalogModule;
 import com.dk.digitalstore.config.DigitalStoreModule;
 import com.dk.digitalstore.healthchecks.DigitalStoreHealthCheck;
 import com.google.inject.Stage;
@@ -20,8 +21,8 @@ public class DigitalStoreApplication extends Application<DigitalStoreConfigurati
         GuiceBundle<DigitalStoreConfiguration> guiceBundle = guiceBundleBuilder
                 .setConfigClass(DigitalStoreConfiguration.class)
                 .addModule(new DigitalStoreModule())
+                .addModule(new CatalogModule())
                 .build(Stage.DEVELOPMENT);
-
         bootstrap.addBundle(guiceBundle);
     }
 
