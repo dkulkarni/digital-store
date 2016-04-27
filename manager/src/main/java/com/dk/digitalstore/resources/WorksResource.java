@@ -1,14 +1,15 @@
 package com.dk.digitalstore.resources;
 
 import com.codahale.metrics.annotation.Timed;
-import com.dk.catalogclient.response.FetchWorksResponse;
 import com.dk.digitalstore.action.FetchWorksAction;
+import com.dk.digitalstore.model.GetAllWorksResponse;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 
@@ -22,9 +23,11 @@ public class WorksResource {
     @GET
     @Timed
     @Produces(MediaType.APPLICATION_JSON)
-    public FetchWorksResponse search() {
+    public GetAllWorksResponse search(@QueryParam("make") String make, @QueryParam("model") String model) {
         return fetchWorksActionProvider
                 .get()
+                .withMake(make)
+                .withModel(model)
                 .invoke();
     }
 
