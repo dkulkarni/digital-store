@@ -2,6 +2,7 @@ var searchUrl = '/api/works/search?make=$make';
 var modelsUrl = '/api/works/models?make=$make'
 
 $(document).ready(function () {
+    $('#navbar').load("../navbar.html");
     ko.applyBindings(new MakesModel());
 })
 

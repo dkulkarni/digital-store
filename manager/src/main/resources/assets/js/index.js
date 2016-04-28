@@ -2,6 +2,7 @@ var searchUrl = '/api/works/search';
 var makesUrl = '/api/works/makes';
 
 $(document).ready(function () {
+    $('#navbar').load("../navbar.html");
     ko.applyBindings(new MainModel());
 })
 
