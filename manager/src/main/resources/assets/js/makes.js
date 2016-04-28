@@ -36,7 +36,7 @@ function getModels(make) {
     });
     for (var i = 0; i < models.filters.length; i++) {
         var model = {};
-        model.link = 'models.html?model=' + models.filters[i];
+        model.link = 'models.html?model=' + models.filters[i] + "&make=" + make;
         model.value = models.filters[i];
         modelsResponse.push(model);
     }
