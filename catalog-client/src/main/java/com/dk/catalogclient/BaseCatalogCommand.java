@@ -3,6 +3,7 @@ package com.dk.catalogclient;
 import com.google.inject.Inject;
 import com.netflix.hystrix.HystrixCommand;
 import com.netflix.hystrix.HystrixCommandGroupKey;
+import com.netflix.hystrix.HystrixCommandProperties;
 import com.netflix.hystrix.exception.HystrixBadRequestException;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
@@ -17,7 +18,9 @@ public abstract class BaseCatalogCommand<T> extends HystrixCommand<T> {
 
     @Inject
     public BaseCatalogCommand(Client client) {
-        super(HystrixCommand.Setter.withGroupKey(HystrixCommandGroupKey.Factory.asKey(CATALOG_GROUP)));
+        super(HystrixCommand.Setter.withGroupKey(HystrixCommandGroupKey.Factory.asKey(CATALOG_GROUP))
+                .andCommandPropertiesDefaults(HystrixCommandProperties.Setter()
+                        .withExecutionIsolationThreadTimeoutInMilliseconds(5000)));
         this.client = client;
     }
 
