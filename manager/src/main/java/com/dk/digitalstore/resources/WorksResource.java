@@ -51,6 +51,7 @@ public class WorksResource {
 
     }
 
+    @Path("/models")
     @GET
     @Timed
     @Produces(MediaType.APPLICATION_JSON)
