@@ -54,7 +54,7 @@ function getErrorMessage(error) {
         return error.responseText;
     }
     else {
-        $("#message").text("Request Failed");
+        $("#message").text("Request Failed. Try refreshing the page");
     }
 }
 
