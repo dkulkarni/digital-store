@@ -10,6 +10,7 @@ function MakesModel() {
     var model = getParam("model");
 
     self.works = getWorks(make, model);
+    self.make = make;
     self.makesLink = './makes.html?make=' + make;
 }
 

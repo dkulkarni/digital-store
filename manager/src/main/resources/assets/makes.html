@@ -18,9 +18,8 @@
 </head>
 
 <body>
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
                     data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -35,36 +34,35 @@
 
 </nav>
 
-<ol class="breadcrumb">
-    <li><a href="./index.html">Home</a></li>
-    <li><a href="#" class="active">Makes</a></li>
-</ol>
-
-<table class="table">
-    <tbody class="tab-content">
-    <tr class="col-md-8">
-        <td class="col-md-2">
-            <ul data-bind="foreach: models">
-                <a data-bind="attr: { href: link}">
-                    <li data-bind="text: value"></li>
-                </a>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <ul class="nav nav-sidebar" data-bind="foreach: models">
+                <li>
+                    <a data-bind="attr: { href: link}, text: value"></a>
+                </li>
             </ul>
-        </td>
-        <td class="col-md-6">
-            <div class="container-fluid" data-bind="foreach: works">
-                <div class="img">
-                    <img class="thumb" data-bind="attr: { src: img}">
+        </div>
 
-                    <div class="desc" data-bind="text: model"></div>
-                </div>
+    </div>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <ol class="breadcrumb">
+            <li><a href="./index.html" class="active">Home</a></li>
+            <li><a href="#" class="active">Makes</a></li>
+        </ol>
+        <h1 class="page-header">Makes</h1>
 
+        <div class="row placeholders" data-bind="foreach: works">
+            <div class="col-xs-6 col-sm-3 img">
+                <img class="img-responsive" data-bind="attr: { src: img}">
 
+                <div class="desc" data-bind="text: model"></div>
             </div>
-        </td>
-    </tr>
-    </tbody>
+        </div>
+    </div>
 
-</table>
+</div>
+
 </body>
 
 </html>
