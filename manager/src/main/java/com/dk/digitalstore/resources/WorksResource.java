@@ -1,7 +1,9 @@
 package com.dk.digitalstore.resources;
 
 import com.codahale.metrics.annotation.Timed;
+import com.dk.digitalstore.action.FetchMakesAction;
 import com.dk.digitalstore.action.FetchWorksAction;
+import com.dk.digitalstore.model.FiltersResponse;
 import com.dk.digitalstore.model.GetAllWorksResponse;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
@@ -19,6 +21,9 @@ public class WorksResource {
     @Inject
     private Provider<FetchWorksAction> fetchWorksActionProvider;
 
+    @Inject
+    private Provider<FetchMakesAction> filtersActionProvider;
+
     @Path("/search")
     @GET
     @Timed
@@ -29,6 +34,17 @@ public class WorksResource {
                 .withMake(make)
                 .withModel(model)
                 .invoke();
+    }
+
+    @Path("/makes")
+    @GET
+    @Timed
+    @Produces(MediaType.APPLICATION_JSON)
+    public FiltersResponse fetchFilters() {
+        return filtersActionProvider
+                .get()
+                .invoke();
+
     }
 
 }
