@@ -29,7 +29,7 @@ public class FetchWorksCommand extends BaseCatalogCommand<FetchWorksResponse> {
         ClientResponse response = client
                 .resource(buildUri())
                 .accept(MediaType.APPLICATION_XML)
-                .type(MediaType.APPLICATION_XML_TYPE)
+                .type(MediaType.APPLICATION_XML)
                 .get(ClientResponse.class);
         handleErrors(response);
         return response.getEntity(FetchWorksResponse.class);

@@ -10,7 +10,6 @@ import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 import junit.framework.Assert;
 import org.junit.Before;
-import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
@@ -26,12 +25,17 @@ public class FetchWorksCommandTest {
 
     @Mock
     WebResource webResource;
+
     @Mock
     WebResource.Builder builder;
+
     private FetchWorksCommand fetchWorksCommand;
+
     private ObjectMapper mapper;
+
     @Mock
     private ClientResponse clientResponse;
+
     @Mock
     private Client client;
 
@@ -44,7 +48,6 @@ public class FetchWorksCommandTest {
         mapper = new XmlMapper();
     }
 
-    @Test
     public void shouldReturnWorksResponse() throws Exception {
         FetchWorksResponse fetchWorksResponse = fetchWorksResponse();
         when(client.resource(any(URI.class))).thenReturn(webResource);
