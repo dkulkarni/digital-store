@@ -3,9 +3,6 @@ package com.dk.digitalstore.action;
 import com.dk.catalogclient.response.FetchWorksResponse;
 import com.google.common.collect.Lists;
 
-/**
- * Created by dkulkarni on 27/04/16.
- */
 public class WorksFactory {
 
     public static FetchWorksResponse fetchAllWorks() {
@@ -14,7 +11,7 @@ public class WorksFactory {
         work1.setExif(new FetchWorksResponse.Work.Exif("NIKON", "NIKON CORPORATION"));
 
         FetchWorksResponse.Work work2 = new FetchWorksResponse.Work();
-        work2.setExif(new FetchWorksResponse.Work.Exif("NIKON", "NIKON CORPORATION"));
+        work2.setExif(new FetchWorksResponse.Work.Exif("NIKON", "NIKON CORPORATION23"));
 
         FetchWorksResponse.Work work3 = new FetchWorksResponse.Work();
         work3.setExif(new FetchWorksResponse.Work.Exif("CANON", "Canon EOS 20D"));

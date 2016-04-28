@@ -5,10 +5,12 @@ import lombok.NoArgsConstructor;
 
 import java.util.Set;
 
+import static com.google.common.collect.Sets.newHashSet;
+
 @Data
 @NoArgsConstructor
 public class FiltersResponse {
 
-    Set<String> filters;
+    Set<String> filters = newHashSet();
 
 }
