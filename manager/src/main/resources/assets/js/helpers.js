@@ -76,3 +76,9 @@ function clearStatusMessage() {
 function handleWarning(message) {
     $('#message').addClass("alert alert-warning").text(message);
 }
+
+function getParam(name) {
+    return (name = (new RegExp('[?&]' + encodeURIComponent(name) + '=([^&]*)')).exec(location.search)) ?
+        decodeURIComponent(name[1]) :
+        "";
+}

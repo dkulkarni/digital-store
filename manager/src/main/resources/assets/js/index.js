@@ -30,12 +30,12 @@ function getWorks() {
 
 function getMakes() {
     var makesResponse = [];
-    var makes = callGet(makesUrl, "Failed to fetch works", function (response) {
+    var makes = callGet(makesUrl, "Failed to fetch makes", function (response) {
         return response.msg;
     });
     for (var i = 0; i < makes.filters.length; i++) {
         var make = {};
-        make.link = '/api/works/search?make=' + makes.filters[i];
+        make.link = 'makes.html?make=' + makes.filters[i];
         make.value = makes.filters[i];
         makesResponse.push(make);
     }
