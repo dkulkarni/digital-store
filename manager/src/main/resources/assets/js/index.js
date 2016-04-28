@@ -1,64 +1,46 @@
-var url = '/api/works/search';
+var searchUrl = '/api/works/search';
+var makesUrl = '/api/works/makes';
 
 $(document).ready(function () {
     ko.applyBindings(new MainModel());
 })
+
 function MainModel() {
     var self = this;
-    var works = getWorks();
-    console.log(works);
+
+    self.works = getWorks();
+    self.makes = getMakes();
 }
 
 function getWorks() {
-    return callGet(url, "Failed to fetch works", function (response) {
+    var fetchWorksResponse = callGet(searchUrl, "Failed to fetch works", function (response) {
         return response.msg;
-    })
-}
-
-var Response = function (status, msg) {
-    var self = this;
-    self.status = status;
-    self.msg = msg;
-
-    self.isOk = function () {
-        if (status == "ok")
-            return true;
-        return false;
-    }
-}
-
-function getEmptyResponse() {
-    return new Response("fail", null);
-}
-
-function httpCall(type, dataType, url, data, errMsg, callBack) {
-    var response = getEmptyResponse();
-    $.ajax({
-        type: type,
-        url: url,
-        data: data,
-        async: false,
-        cache: false,
-        contentType: 'application/json',
-        dataType: dataType,
-        success: function (replyJson) {
-            response = new Response("ok", replyJson);
-        },
-        error: function (err, textStatus, errorThrown) {
-            var msg = getErrorMessage(err);
-            response = new Response("fail", msg);
-        }
     });
-
-    if (!response.isOk()) {
-        if (errMsg) {
-            handleRequestFailure(errMsg + (response.msg != null ? ":" + response.msg : ""));
-        }
-    } else {
-        return callBack(response);
+    var works = [];
+    for (var i = 0; i < fetchWorksResponse.work.length; i++) {
+        var res = fetchWorksResponse.work;
+        var work = {};
+        work.img = res[i].url[0].value;
+        work.make = res[i].exif.make;
+        work.model = res[i].exif.model;
+        works.push(work);
     }
+    return works;
 }
 
-function callGet(url, errMsg, callBack) {
-    return httpCall('GET', 'json', url, "", errMsg, callBack);
+function getMakes() {
+    var makesResponse = [];
+    var makes = callGet(makesUrl, "Failed to fetch works", function (response) {
+        return response.msg;
+    });
+    for (var i = 0; i < makes.filters.length; i++) {
+        var make = {};
+        make.link = '/api/works/search?make=' + makes.filters[i];
+        make.value = makes.filters[i];
+        makesResponse.push(make);
+    }
+    console.log(makesResponse);
+    return makesResponse;
 }
+
+

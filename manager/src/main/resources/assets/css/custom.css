@@ -1,0 +1,33 @@
+ul.thumbs li {
+    float: left;
+    list-style: none outside none;
+    margin: 5px 10px 5px 0;
+    padding: 0;
+}
+
+.thumbs {
+    width: 200px;
+}
+
+div.img {
+    height: 215px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    float: left;
+    width: 180px;
+}
+
+div.img:hover {
+    border: 1px solid #777;
+}
+
+div.img img {
+    width: 100%;
+    height: auto;
+}
+
+div.desc {
+    padding: 15px;
+    vertical-align: bottom;
+    text-align: center;
+}

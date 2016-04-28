@@ -3,20 +3,17 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
 
     <title>Redbubble</title>
 
-    <!-- Bootstrap core CSS -->
     <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link href="./css/custom.css" rel="stylesheet">
     <script src="js/knockout-3.4.0.js" type="text/javascript"></script>
     <script src="js/jquery-1.12.3.min.js" type="text/javascript"></script>
     <script src="js/index.js" type="text/javascript"></script>
-
-    <!-- Custom styles for this template -->
-    <!--<link href="navbar-static-top.css" rel="stylesheet">-->
+    <script src="js/helpers.js" type="text/javascript"></script>
 
 </head>
 
@@ -35,27 +32,38 @@
             <a class="navbar-brand" href="#">Redbubble Gallery</a>
         </div>
     </div>
-    
+
 </nav>
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-1"><img src="http://ih1.redbubble.net/work.31820.1.flat,135x135,075,f.jpg"></div>
-        <div class="col-md-1 col-md-offset-0"><img src="http://ih1.redbubble.net/work.31820.1.flat,135x135,075,f.jpg"></div>
-        <div class="col-md-1 col-md-offset-0"><img src="http://ih1.redbubble.net/work.31820.1.flat,135x135,075,f.jpg"></div>
-        <div class="col-md-1 col-md-offset-0"><img src="http://ih1.redbubble.net/work.31820.1.flat,135x135,075,f.jpg"></div>
-        <div class="col-md-1 col-md-offset-0"><img src="http://ih1.redbubble.net/work.31820.1.flat,135x135,075,f.jpg"></div>
+<ol class="breadcrumb">
+    <li><a href="./index.html" class="active">Home</a></li>
+</ol>
 
-    </div>
-    <div class="row">
-        <div class="col-md-1 col-md-offset-0"><img src="http://ih1.redbubble.net/work.31820.1.flat,135x135,075,f.jpg"></div>
-        <div class="col-md-1 col-md-offset-0"><img src="http://ih1.redbubble.net/work.31820.1.flat,135x135,075,f.jpg"></div>
-        <div class="col-md-1 col-md-offset-0"><img src="http://ih1.redbubble.net/work.31820.1.flat,135x135,075,f.jpg"></div>
-        <div class="col-md-1 col-md-offset-0"><img src="http://ih1.redbubble.net/work.31820.1.flat,135x135,075,f.jpg"></div>
-        <div class="col-md-1 col-md-offset-0"><img src="http://ih1.redbubble.net/work.31820.1.flat,135x135,075,f.jpg"></div>
-    </div>
-</div>
+<table class="table">
+    <tbody class="tab-content">
+    <tr class="col-md-8">
+        <td class="col-md-2">
+            <ul data-bind="foreach: makes">
+                <a data-bind="attr: { href: link}">
+                    <li data-bind="text: value"></li>
+                </a>
+            </ul>
+        </td>
+        <td class="col-md-6">
+            <div class="container-fluid" data-bind="foreach: works">
+                <div class="img">
+                    <img class="thumb" data-bind="attr: { src: img}">
 
+                    <div class="desc" data-bind="text: model"></div>
+                </div>
+
+
+            </div>
+        </td>
+    </tr>
+    </tbody>
+
+</table>
 </body>
 
 </html>
