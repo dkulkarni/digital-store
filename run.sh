@@ -1,0 +1,1 @@
+java -cp "manager/target/classes:manager/target/dependency/*" com.dk.digitalstore.DigitalStoreApplication server config/dev/digital_store.yaml
